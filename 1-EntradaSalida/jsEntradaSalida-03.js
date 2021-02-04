@@ -1,12 +1,16 @@
 /*
-Debemos lograr tomar un dato por 'ID'
-y luego mostrarlo por 'Alert' al presionar el botón  'mostrar'*/
+Facundo Berges
+
+Ejercicio 3.-
+Debemos lograr tomar un dato por 'ID.value' y luego mostrarlo por 'alert()' al presionar el botón  'mostrar'*/
+
 function mostrar()
 {
-	var nombreIngresado;
-	nombreIngresado=txtIdNombre.value;
-	alert("ok");
+	let nombreIngresado;
+	//nombreIngresado = txtIdNombre.value; 
+	// or 
+	nombreIngresado = document.getElementById("txtIdNombre").value;
+
+	alert(nombreIngresado);
 
 }
-
-
