@@ -18,7 +18,7 @@ function Rectangulo ()
     largoTerreno=document.getElementById("txtIdLargo").value;
     anchoTerreno=document.getElementById("txtIdAncho").value;
 
-    cantidadAlambre=((largoTerreno*2)+(anchoTerreno*2))*3;
+    cantidadAlambre=(largoTerreno*anchoTerreno)*3;
 
     alert("La cantidad de alambre necesaria para el terreno rectangular es " +cantidadAlambre+ " metros.");
 }
@@ -36,5 +36,18 @@ function Circulo ()
 }
 function Materiales () 
 {
-	
+    let largoTerreno;
+    let anchoTerreno;
+    let metrosCuadrados;
+    let bolsasCemento;
+    let bolsasCal;
+
+    largoTerreno=document.getElementById("txtIdLargo").value;
+    anchoTerreno=document.getElementById("txtIdAncho").value;
+
+    metrosCuadrados=largoTerreno*anchoTerreno;
+    bolsasCemento=metrosCuadrados*2;
+    bolsasCal=metrosCuadrados*3;
+
+    alert("Para el terreno ingresado, se necesitan " +bolsasCemento+ " bolsas de cemento y " +bolsasCal+ " bolsas de cal.");
 }
