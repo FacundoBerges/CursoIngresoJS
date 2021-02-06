@@ -20,4 +20,9 @@ function mostrar()
 		alert("La persona es mayor de edad.");
 	}
 
+	//el 2do 'if' se puede reemplazar por:
+	//else
+	//{
+	//	alert("La persona es mayor de edad."");	
+	//} 
 }//FIN DE LA FUNCIÓN
