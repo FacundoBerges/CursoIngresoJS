@@ -16,13 +16,13 @@ function mostrar()
 	}
 	else
 	{
-		if(edad<18 && edad>12)
+		if(edad<13)
 		{
-			alert("La persona es adolescente.");
+			alert("La persona es un/a niño/a.");
 		}
 		else
 		{	
-			alert("La persona es un/a niño/a.");
+			alert("La persona es adolescente.");
 		}
 
 	}

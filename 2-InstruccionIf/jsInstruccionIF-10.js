@@ -1,6 +1,26 @@
+/*Facundo Berges
+
+Ejercicio 10:
+Al presionar el Botón, mostrar un número Random del 1 al 10 inclusive*/
+
 function mostrar()
 {
-	//Genero el número RANDOM entre 1 y 10 
-	alert("ok");
+	let notaRandom;
+	let mensaje;
+	notaRandom=Math.floor(Math.random()*10)+1;
 
-}//FIN DE LA FUNCIÓN
+	if(notaRandom>8)
+	{
+		mensaje="EXCELENTE. Nota del examen: " +notaRandom;
+	}else
+	{
+		if(notaRandom>3)
+		{
+			mensaje="APROBÓ. Nota del examen: " +notaRandom;
+		}else
+		{
+			mensaje="Vamos, la proxima se puede. Nota del examen: " +notaRandom;
+		}
+	}
+	alert(mensaje);
+}
