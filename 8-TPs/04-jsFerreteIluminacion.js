@@ -95,3 +95,4 @@ function CalcularPrecio ()
     }
     document.getElementById("txtIdprecioDescuento").value="El precio final a pagar es $ "+(precioFinal+precioConIIBB)+". ($ "+precioConIIBB+ " corresponden a IIBB)";
 }
+//--------------------------------------------------------------------------------------------------------
