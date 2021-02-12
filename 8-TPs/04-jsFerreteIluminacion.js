@@ -13,6 +13,7 @@
         en informar del impuesto con el siguiente mensaje: ”Usted pago X de IIBB.”, siendo X el impuesto que se pagó.
 */
 function CalcularPrecio () 
+/* VERSION 1
 {
     let precioLamparitas;
     let cantidadLamparitas;
@@ -95,4 +96,88 @@ function CalcularPrecio ()
     }
     document.getElementById("txtIdprecioDescuento").value="El precio final a pagar es $ "+(precioFinal+precioConIIBB)+". ($ "+precioConIIBB+ " corresponden a IIBB)";
 }
-//--------------------------------------------------------------------------------------------------------
+FIN DE VERSION 1
+-------------------------------------------------------------------------------------------------------------------------*/
+
+{
+    let precioLamparitas;
+    let cantidadLamparitas;
+    let marcaLamparitas;
+    let precioFinal;
+    let precioConIIBB;
+    let porcentajeDescuento;
+
+    cantidadLamparitas=document.getElementById("txtIdCantidad").value;
+    marcaLamparitas=document.getElementById("Marca").value;
+    precioLamparitas=cantidadLamparitas*35;
+
+    if(cantidadLamparitas>5)
+    {
+        porcentajeDescuento=50;
+    }
+    else
+    {
+        if(cantidadLamparitas==5)
+        {
+            if(marcaLamparitas=="ArgentinaLuz")
+            {
+                porcentajeDescuento=40;
+            }
+            else
+            {
+                porcentajeDescuento=30;
+            }
+        }
+        else
+        {
+            if(cantidadLamparitas==4)
+            {
+                if(marcaLamparitas=="ArgentinaLuz" || marcaLamparitas=="FelipeLamparas")
+                {
+                    porcentajeDescuento=25;
+                }
+                else
+                {
+                    porcentajeDescuento=20;
+                }
+            }
+            else
+            {
+                if(cantidadLamparitas==3)
+                {
+                    if(marcaLamparitas=="ArgentinaLuz" || marcaLamparitas=="FelipeLamparas")
+                    {
+                        if(marcaLamparitas=="ArgentinaLuz")
+                        {
+                            porcentajeDescuento=15;
+                        }
+                        else
+                        {
+                            porcentajeDescuento=10;
+                        }
+                    }
+                    else
+                    {
+                        porcentajeDescuento=5;
+                    }
+                }
+                else
+                {
+                    porcentajeDescuento=0;
+                }
+            }
+        }
+    }
+    precioFinal=precioLamparitas-(precioLamparitas*porcentajeDescuento/100);
+
+    if(precioFinal>119)
+    {
+        precioConIIBB=(precioFinal*10/100);
+        alert("Usted pagó $ "+precioConIIBB+" de ingresos brutos.");
+    }
+    else
+    {
+        precioConIIBB=0
+    }
+    document.getElementById("txtIdprecioDescuento").value="El precio final a pagar es $ "+(precioFinal+precioConIIBB)+". ($ "+precioConIIBB+ " corresponden a IIBB)";
+}
