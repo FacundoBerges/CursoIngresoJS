@@ -92,20 +92,24 @@ function mostrar()
     while(respuesta=="si")
     {
         mascotaIngresado=prompt("Ingrese tipo de mascota (perro, gato u 'otra cosa'):");
+        mascotaIngresado=mascotaIngresado.toLowerCase();
         while(isNaN(mascotaIngresado)==false || mascotaIngresado!="perro" && mascotaIngresado!="gato" && mascotaIngresado!="otra cosa")
         {
             mascotaIngresado=prompt("ERROR. Ingrese tipo de mascota (perro, gato u 'otra cosa'):");
+            mascotaIngresado=mascotaIngresado.toLowerCase();
         }
 
         tipoDePelajeIngresado=prompt("Ingrese tipo de pelaje (corto, largo o sin pelo):");
+        tipoDePelajeIngresado=tipoDePelajeIngresado.toLowerCase();
         while(isNaN(tipoDePelajeIngresado)==false || tipoDePelajeIngresado!="corto" && tipoDePelajeIngresado!="largo" && tipoDePelajeIngresado!="sin pelo")
         {
             tipoDePelajeIngresado=prompt("ERROR. Ingrese tipo de pelaje (corto, largo o sin pelo):");
+            tipoDePelajeIngresado=tipoDePelajeIngresado.toLowerCase();
         }
 
         edadMascotaIngresada=prompt("Ingrese edad de la mascota (entre 1 y 25 años):");
         edadMascotaIngresada=parseInt(edadMascotaIngresada);
-        while(isNaN(edadMascotaIngresada)==true || edadMascotaIngresada>25 || edadMascotaIngresada<1)
+        while(isNaN(edadMascotaIngresada)==true || edadMascotaIngresada<1 || edadMascotaIngresada>25)
         {
             edadMascotaIngresada=prompt("ERROR. Ingrese edad de la mascota (entre 1 y 25 años):");
             edadMascotaIngresada=parseInt(edadMascotaIngresada);
@@ -117,10 +121,10 @@ function mostrar()
             nombreMascotaIngresada=prompt("ERROR. Ingrese nombre de la mascota:");
         }
 
-        razaMascotaIngresada=prompt("Ingrese raza de la mascota:");
+        razaMascotaIngresada=prompt("Ingrese nombre de la mascota:");
         while(isNaN(razaMascotaIngresada)==false)
         {
-            razaMascotaIngresada=prompt("ERROR. Ingrese raza de la mascota:");
+            razaMascotaIngresada=prompt("ERROR. Ingrese nombre de la mascota:");
         }
 
         pesoIngresado=prompt("Ingrese peso de la mascota(entre 1 y 50 kg):");
@@ -132,9 +136,11 @@ function mostrar()
         }
 
         estadoClinicoIngresado=prompt("Ingrese estado clínico (enfermo, internado o adopcion):");
+        estadoClinicoIngresado=estadoClinicoIngresado.toLowerCase();
         while(isNaN(estadoClinicoIngresado)==false || estadoClinicoIngresado!="enfermo" && estadoClinicoIngresado!="internado" && estadoClinicoIngresado!="adopcion")
         {
             estadoClinicoIngresado=prompt("ERROR. Ingrese estado clínico (enfermo, internado o adopcion):");
+            estadoClinicoIngresado=estadoClinicoIngresado.toLowerCase();
         }
 
         temperaturaCorporalIngresada=prompt("Ingrese temperatura corporal (entre 20 y 50 grados):");
@@ -278,7 +284,7 @@ function mostrar()
     if(contadorGatosYPerros!=0)
     {
         porcentajeGatosYPerros=contadorGatosYPerros*100/contadorAnimalesIngresados;
-        alert("De los "+contadorAnimalesIngresados+" animales ingresados, el "+porcentajeGatosYPerros+"% son perros y/o gatos.");
+        alert("De los "+contadorAnimalesIngresados+" animales ingresados, el "+porcentajeGatosYPerros+"% son perros y gatos.");
     }
 
     //G
@@ -308,4 +314,5 @@ function mostrar()
     {
         alert("El gato sin pelo más liviano es "+nombreGatoSinPeloMasLiviano+" de raza "+razaGatoSinPeloMasLiviano+" con un peso de "+pesoGatoSinPeloMasLiviano+" kg.");
     }
+
 }//Fin de la función.

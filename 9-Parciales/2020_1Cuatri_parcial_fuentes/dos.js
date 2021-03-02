@@ -1,6 +1,5 @@
 /* Facundo Hector Berges
 
-parcial 2020, ejercicio 2:
 Realizar el algoritmo que permita ingresar los datos de una compra productos de la construccion, 
 hasta que el cliente quiera:
 Tipo validad("arena";"cal";"cemento")
@@ -10,150 +9,134 @@ Precio por bolsa (más de cero ),
 Si compro más de 10 bolsas en total tenes 15% de descuento sobre el total a pagar.
 Si compro más de 30 bolsas en total tenes 25% de descuento sobre el total a pagar.
 a) El importe total a pagar , bruto sin descuento y...
-b) el importe total a pagar con descuento(solo si corresponde).
-d) Informar el tipo con mas cantidad de bolsas.
-f) El tipo mas caro. */
+b) el importe total a pagar con descuento(solo si corresponde)
+c) Informar el tipo con mas cantidad de bolsas.
+d) El tipo mas caro
+*/
 
 function mostrar()
 {
   let respuesta;
-  let tipoProductoIngresado;
-  let cantidadBolsasIngresadas;
-  let precioBolsasIngresadas;
-  let contadorBolsas;
+  let productoIngresado;
+  let cantidadBolsasIngresada;
+  let precioBolsaIngresada;
   let totalAPagarBruto;
-  let totalAPagarConDescuento;
-  let porcentajeDescuento;
-  let AcumuladorBolsasArena;
-  let AcumuladorBolsasCal;
-  let AcumuladorBolsasCemento;
-  let mayorPrecioArena;
-  let mayorPrecioCal;
-  let mayorPrecioCemento;
+  let acumuladorBolsasCompradas;
+  let descuentoPorCantidadBolsas;
+  let precioConDescuento;
+  let cantidadBolsasCemento;
+  let cantidadBolsasCal;
+  let cantidadBolsasArena;
+  let productoConMasBolsas;
+  let flagPrimerIngreso;
   let tipoMasCaro;
-  let mayorPrecio;
-  let banderaPrimerIngreso;
-  let TipoConMasBolsas;
+  let precioMasCaro;
+
+  let respuestaA;
+  let respuestaB;
+  let respuestaC;
+  let respuestaD;
 
   respuesta="si";
-  contadorBolsas=0;
-  descuentoBolsas=0;
+  flagPrimerIngreso=true;
+  acumuladorBolsasCompradas=0;
+  descuentoPorCantidadBolsas=0;
   totalAPagarBruto=0;
-  porcentajeDescuento=0;
-  totalAPagarConDescuento=0;
-  AcumuladorBolsasArena=0;
-  AcumuladorBolsasCal=0;
-  AcumuladorBolsasCemento=0;
-  mayorPrecioArena=0;
-  mayorPrecioCal=0;
-  mayorPrecioCemento=0;
-  banderaPrimerIngreso=true;
+  cantidadBolsasCemento=0;
+  cantidadBolsasCal=0;
+  cantidadBolsasArena=0;
 
-  while(respuesta=="si" || respuesta=="Si" || respuesta=="SI")
+  while(respuesta=="si")
   {
-    tipoProductoIngresado=prompt("Ingrese el tipo de producto de construcción (arena, cal o cemento):");
-    while(isNaN(tipoProductoIngresado)==false || tipoProductoIngresado!="Arena" && tipoProductoIngresado!="arena" && tipoProductoIngresado!="Cal" && tipoProductoIngresado!="cal" && tipoProductoIngresado!="Cemento" && tipoProductoIngresado!="cemento")
+    productoIngresado=prompt("Ingrese producto (arena, cal o cemento):");
+    productoIngresado=productoIngresado.ToLowerCase();
+    while(isNaN(productoIngresado)==false || (productoIngresado!="arena" && productoIngresado!="cal" && productoIngresado!="cemento"))
     {
-      tipoProductoIngresado=prompt("Error. Ingrese el tipo de producto de construcción (arena, cal o cemento):");
-    } //Fin de validación de producto.
+      productoIngresado=prompt("ERROR. Ingrese producto (arena, cal o cemento):");
+      productoIngresado=productoIngresado.ToLowerCase();
+    }
 
-    cantidadBolsasIngresadas=prompt("Ingrese la cantidad de bolsas:");
-    cantidadBolsasIngresadas=parseInt(cantidadBolsasIngresadas);
-    while(isNaN(cantidadBolsasIngresadas)==true || cantidadBolsasIngresadas<1)
+    cantidadBolsasIngresada=prompt("Ingrese cantidad de bolsas (mayor a 0):");
+    cantidadBolsasIngresada=parseInt(cantidadBolsasIngresada);
+    while(isNaN(cantidadBolsasIngresada)==true || cantidadBolsasIngresada<1)
     {
-      cantidadBolsasIngresadas=prompt("Error. Ingrese la cantidad de bolsas:");
-      cantidadBolsasIngresadas=parseInt(cantidadBolsasIngresadas);  
-    } //Fin de validación de bolsas.
+      cantidadBolsasIngresada=prompt("ERROR. Ingrese cantidad de bolsas (mayor a 0):");
+      cantidadBolsasIngresada=parseInt(cantidadBolsasIngresada);
+    }
 
-    precioBolsasIngresadas=prompt("Ingrese el precio por bolsa (mayor a 0):");
-    precioBolsasIngresadas=parseInt(precioBolsasIngresadas);
-    while(isNaN(precioBolsasIngresadas)==true || precioBolsasIngresadas<1)
+    precioBolsaIngresada=prompt("Ingrese precio de las bolsas ingresadas (mayor a $ 0):");
+    precioBolsaIngresada=parseInt(precioBolsaIngresada);
+    while(isNaN(precioBolsaIngresada)==true || precioBolsaIngresada<1)
     {
-      precioBolsasIngresadas=prompt("Ingrese el precio por bolsa (mayor a 0):");
-      precioBolsasIngresadas=parseInt(precioBolsasIngresadas);
-    } //Fin de validación de precio.
+      precioBolsaIngresada=prompt("ERROR. Ingrese precio de las bolsas ingresadas (mayor a $ 0):");
+      precioBolsaIngresada=parseInt(precioBolsaIngresada);
+    }
+    // Fin de validaciones.
 
-    
-    if(banderaPrimerIngreso==true)
+    acumuladorBolsasCompradas=acumuladorBolsasCompradas+cantidadBolsasIngresada;
+
+    totalAPagarBruto=totalAPagarBruto+(cantidadBolsasIngresada*precioBolsaIngresada);
+
+    switch(productoIngresado)
     {
-      tipoMasCaro=tipoProductoIngresado;
-      mayorPrecio=precioBolsasIngresadas;
-      banderaPrimerIngreso=false;
+      case "arena":
+        cantidadBolsasArena=cantidadBolsasArena+cantidadBolsasIngresada;
+        break;
+      case "cal":
+        cantidadBolsasCal=cantidadBolsasCal+cantidadBolsasIngresada;
+        break;
+      case "cemento":
+        cantidadBolsasCemento=cantidadBolsasCemento+cantidadBolsasIngresada;
+        break;
+    }//Fin del switch.
+
+    if(flagPrimerIngreso==true || precioBolsaIngresada>precioMasCaro)
+    {
+      flagPrimerIngreso=false;
+      precioMasCaro=precioBolsaIngresada;
+      tipoMasCaro=productoIngresado;
+    }
+
+    respuesta=prompt("Escriba 'si' si desea continuar:");
+    respuesta=respuesta.ToLowerCase();
+  }//Fin del while.
+
+  respuestaA="El total a pagar bruto es de $ "+totalAPagarBruto;
+  alert(respuestaA);
+
+  if(acumuladorBolsasCompradas>10)
+  {
+    if(acumuladorBolsasCompradas>30)
+    {
+      descuentoPorCantidadBolsas=15;
     }
     else
     {
-      switch(tipoProductoIngresado)
-      {
-        case "Arena":
-        case "arena":
-          AcumuladorBolsasArena=AcumuladorBolsasArena+cantidadBolsasIngresadas;
-          if(mayorPrecio<precioBolsasIngresadas)
-          {
-            tipoMasCaro=tipoProductoIngresado;
-            mayorPrecioArena=precioBolsasIngresadas;
-          }
-          break;
-        case "Cal":
-        case "cal":
-          AcumuladorBolsasCal=AcumuladorBolsasCal+cantidadBolsasIngresadas;
-          if(mayorPrecio<precioBolsasIngresadas)
-          {
-            tipoMasCaro=tipoProductoIngresado;
-            mayorPrecioCal=precioBolsasIngresadas;
-          }
-          break;
-        case "Cemento":
-        case "cemento":
-          AcumuladorBolsasCemento=AcumuladorBolsasCemento+cantidadBolsasIngresadas;
-          if(mayorPrecio<precioBolsasIngresadas)
-          {
-            tipoMasCaro=tipoProductoIngresado;
-            mayorPrecioCemento=precioBolsasIngresadas;
-          }
-          break;
-      } 
+      descuentoPorCantidadBolsas=25;
     }
-    contadorBolsas=contadorBolsas+cantidadBolsasIngresadas;
-    totalAPagarBruto=totalAPagarBruto+precioBolsasIngresadas*cantidadBolsasIngresadas;
-
-    respuesta=prompt("Si desea continuar, escriba 'si':");
-  }//Fin del While
-
-  if(cantidadBolsasIngresadas>10)
-  {
-    if(contadorBolsas>30)
-    {
-      porcentajeDescuento=25;
-    }
-    else
-    {
-      porcentajeDescuento=15;
-    }
+    precioConDescuento=totalAPagarBruto-(totalAPagarBruto*descuentoPorCantidadBolsas/100);
+    respuestaB="El total a pagar con descuento por cantidad de bolsas compradas es de $ "+precioConDescuento;
+    alert(respuestaB);
   }
 
-  if(AcumuladorBolsasCemento>AcumuladorBolsasCal && AcumuladorBolsasCemento>AcumuladorBolsasArena)
+  if(cantidadBolsasCemento>cantidadBolsasArena && cantidadBolsasCemento>cantidadBolsasCal)
   {
-    TipoConMasBolsas="cemento";
+    productoConMasBolsas="cemento";
   }
   else
   {
-    if(AcumuladorBolsasCal>AcumuladorBolsasArena)
+    if(cantidadBolsasArena>cantidadBolsasCal)
     {
-      TipoConMasBolsas="cal";
+      productoConMasBolsas="arena";
     }
     else
     {
-      TipoConMasBolsas="arena";
+      productoConMasBolsas="cal";
     }
   }
+  respuestaC="El producto con más bolsas ingresadas es "+productoConMasBolsas+".";
+  alert(respuestaC);
 
-  totalAPagarConDescuento=totalAPagarBruto-totalAPagarBruto*porcentajeDescuento/100;
-
-  alert("El importe total bruto es de $ "+totalAPagarBruto+".");
-  if(porcentajeDescuento!=0)
-  {
-    alert("El importe a pagar con descuento aplicado es $ "+totalAPagarConDescuento+".");
-  }
-  alert("El tipo con mayor cantidad de bolsas es "+TipoConMasBolsas+".");
-  alert("El tipo más caro es "+tipoMasCaro+".");
-}
+  respuestaD="El producto más caro ingresado fue "+tipoMasCaro+" con un valor de $ "+precioMasCaro+".";
+  alert(respuestaD);
+}//Fin de la función.
